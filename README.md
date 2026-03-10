@@ -26,30 +26,27 @@ The interface embraces a **Windows 11–inspired Glassmorphism design**, featuri
 
 ---
 
-# Screenshots
+## 📸 Screenshots
 
 > Modern Dark Mode with Glassmorphism effects.
 
 ### Dashboard
-
-![dashboard screenshot](docs/screenshots/dashboard.png)
+![Dashboard](./screenshots/dashboard.png)
 
 ### Processes Manager
-
-![processes screenshot](docs/screenshots/processes.png)
+![Processes](./screenshots/processes.png)
 
 ### Performance Monitoring
-
-![performance screenshot](docs/screenshots/performance.png)
+![Performance](./screenshots/performance.png)
 
 ### Startup Apps Manager
-
-![startup screenshot](docs/screenshots/startup.png)
+![Startup](./screenshots/startup.png)
 
 ### Systemd Services
+![Services](./screenshots/services.png)
 
-![services screenshot](docs/screenshots/services.png)
-
+### GameMode & CPU Governor
+![GameMode](./screenshots/gamemode.png)
 ---
 
 # Core Features
