@@ -1,0 +1,51 @@
+/*
+ * /usr/share/polkit-1/rules.d/10-archtask-pro.rules
+ *
+ * ArchTask-Pro GUI — Polkit Rule
+ * ==============================
+ * Grants members of the "wheel" group passwordless access to:
+ *   1. cpupower  — CPU governor switching
+ *   2. systemctl — service start/stop/restart/enable/disable
+ *   3. kill      — terminate system processes
+ *
+ * Install:
+ *   sudo install -Dm644 polkit/10-archtask-pro.rules \
+ *       /usr/share/polkit-1/rules.d/10-archtask-pro.rules
+ *
+ * For a single user instead of wheel group, change:
+ *   subject.isInGroup("wheel")
+ * to:
+ *   subject.user == "yourusername"
+ */
+
+polkit.addRule(function(action, subject) {
+
+    // ── cpupower (CPU governor) ───────────────────────────────────────────────
+    if (action.id === "org.freedesktop.policykit.exec") {
+        var prog = action.lookup("program") || "";
+
+        if ((prog.indexOf("cpupower") !== -1) && subject.isInGroup("wheel")) {
+            return polkit.Result.YES;
+        }
+
+        // ── systemctl service management ─────────────────────────────────────
+        if ((prog === "/usr/bin/systemctl" || prog === "/bin/systemctl") &&
+            subject.isInGroup("wheel"))
+        {
+            var cmd = action.lookup("command_line") || "";
+            var allowed = ["start", "stop", "restart", "enable", "disable"];
+            for (var i = 0; i < allowed.length; i++) {
+                if (cmd.indexOf("systemctl " + allowed[i]) !== -1) {
+                    return polkit.Result.YES;
+                }
+            }
+        }
+
+        // ── kill (for system processes) ───────────────────────────────────────
+        if ((prog === "/bin/kill" || prog === "/usr/bin/kill") &&
+            subject.isInGroup("wheel"))
+        {
+            return polkit.Result.YES;
+        }
+    }
+});

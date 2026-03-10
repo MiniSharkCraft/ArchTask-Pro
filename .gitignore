@@ -1,0 +1,25 @@
+# Wails Build Binaries
+build/bin/
+build/windows/
+build/darwin/
+build/linux/
+
+# Go dependencies & artifacts
+vendor/
+go.sum
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Frontend dependencies & build artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/.DS_Store
+
+# IDEs & System files
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
