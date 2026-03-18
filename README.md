@@ -14,6 +14,8 @@
   <img src="https://img.shields.io/badge/Platform-Arch%20Linux-blue">
 </p>
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G11UYLFQ)
+
 ---
 
 # ArchTask-Pro
